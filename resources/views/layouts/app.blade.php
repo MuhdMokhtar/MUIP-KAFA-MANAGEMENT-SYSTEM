@@ -52,7 +52,7 @@
                     <li class="sidebar-item">
 
                         <a href="#" class="sidebar-link">
-                            <i class="lni lni-cog"></i>
+                            <i class="lni lni-book"></"></i>
                             <span>KAFA ACTIVITIES</span>
                         </a>
 
@@ -71,14 +71,14 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
-                            <i class="lni lni-popup"></i>
+                            <i class="bi bi-bell-fill"></i>
                             <span>Notification</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                            <i class="lni lni-protection"></i>
+                            <i class="bi bi-gear""></i>
                             <span>Settings</span>
                         </a>
                         <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
