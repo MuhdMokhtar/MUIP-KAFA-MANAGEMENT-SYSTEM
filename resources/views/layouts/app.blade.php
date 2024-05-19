@@ -35,86 +35,78 @@
 
 </head>
 
-<body class="font-sans antialiased">
-
-    <body>
-        <div class="wrapper">
-            <aside id="sidebar">
-                <div class="d-flex">
-                    <button class="toggle-btn" type="button">
-                        <i class="lni lni-grid-alt"></i>
-                    </button>
-                    <div class="sidebar-logo">
-                        <a href="#">E-KAFA</a>
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">E-KAFA</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="{{ route('profile.edit') }}" class="sidebar-link">
+                        <i class="lni lni-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-book"></"></i>
+                        <span>KAFA ACTIVITIES</span>
+                    </a>
+                </li>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>STUDENT RESULTS</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-receipt"></i>
+                        <span>FEES</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-bell-fill"></i>
+                        <span>Notification</span>
+                    </a>
+                </li>
+                <form method="POST" action="{{ route('logout') }}">
+                    <div class="sidebar-footer">
+                        <a href="route('logout')" onclick="event.preventDefault();
+                   this.closest('form').submit();" class="sidebar-link"><i class="lni lni-exit"></i>
+                            <span>Logout</span>
+                        </a>
                     </div>
-                </div>
-                <ul class="sidebar-nav">
-                    <li class="sidebar-item">
 
-                        <a href="#" class="sidebar-link">
-                            <i class="lni lni-book"></"></i>
-                            <span>KAFA ACTIVITIES</span>
-                        </a>
+        </aside>
+        <!-- Page Content -->
+        <div class="main p-3">
+            <div class="text-center">
 
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="lni lni-agenda"></i>
-                            <span>STUDENT RESULTS</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-receipt"></i>
-                            <span>FEES</span>
-                        </a>
+                {{ $slot }}
 
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-bell-fill"></i>
-                            <span>Notification</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                            <i class="bi bi-gear""></i>
-                            <span>Settings</span>
-                        </a>
-                        <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href=" {{ route('profile.edit') }}" class="sidebar-link"><i class="bi bi-person-circle"></i>Profile</a>
-                            </li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <li class="sidebar-item">
-                                    <a href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="sidebar-link"><i class="lni lni-exit"></i>Logout</a>
-                                </li>
-                            </form>
-                        </ul>
-                    </li>
-
-            </aside>
-            <!-- Page Content -->
-            <div class="main p-3">
-                <div class="text-center">
-
-                    {{ $slot }}
-
-                </div>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <script src="{{ URL::asset('js/sidebarscript.js')}}"></script>
-        <footer>
-            <div class="footer">
-                <p>© 2024 E-KAFA. All Rights Reserved</p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="{{ URL::asset('js/sidebarscript.js')}}"></script>
+    <footer>
+        <div class="footer">
+            <p>© 2024 E-KAFA. All Rights Reserved</p>
 
-            </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
 
 
 </html>

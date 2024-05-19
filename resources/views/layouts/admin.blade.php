@@ -76,24 +76,16 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                            <i class="bi bi-gear""></i>
-                            <span>Settings</span>
-                        </a>
-                        <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href=" {{ route('profile.edit') }}" class="sidebar-link"><i class="bi bi-person-circle"></i>Profile</a>
-                            </li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <li class="sidebar-item">
-                                    <a href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="sidebar-link"><i class="lni lni-exit"></i>Logout</a>
-                                </li>
-                            </form>
-                        </ul>
-                    </li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <li class="sidebar-item">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="sidebar-link">
+                                <i class="lni lni-exit"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </form>
 
             </aside>
             <!-- Page Content -->
@@ -111,7 +103,6 @@
         <footer>
             <div class="footer">
                 <p>© 2024 E-KAFA. All Rights Reserved</p>
-
             </div>
         </footer>
     </body>
