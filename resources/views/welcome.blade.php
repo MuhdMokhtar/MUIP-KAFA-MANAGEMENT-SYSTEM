@@ -17,9 +17,9 @@
         <!-- Styles -->
        
     </head>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bgcolor">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">KAFA.COM</a>
+    <a class="navbar-brand" href="/">KAFA.COM</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,15 +45,10 @@
   </div>
 </nav>
 
-
-
-
-
-
 <!--MAIN BODY START HERE-->
 <div class="container-full">
-            <section class="w-100 vh-100 d-flex flex-column justify-content-center align-items-center bg-body-tertiary  ">
-              <h1 class="centered-text fade-in-text" style="font-family: Chewy;">Welcome to Kafa.com</h1>
+            <section class="w-100 vh-100 d-flex flex-column justify-content-center align-items-center wrapper-main ">
+              <h1 class="centered-text typewriter" style="font-family: Chewy;">Welcome to Kafa.com</h1>
               
               <br>
               <div class=" container">
