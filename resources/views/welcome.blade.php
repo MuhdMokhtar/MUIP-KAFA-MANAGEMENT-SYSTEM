@@ -77,49 +77,13 @@
 </nav>
 
 <!--MAIN BODY START HERE-->
-   <!-- Slider main container -->
-<div class="swiper">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    <div class="swiper-slide">Slide 1</div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
-    ...
-  </div>
-
-
-  <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-
-  <!-- If we need scrollbar -->
-  <div class="swiper-scrollbar"></div>
+<div class="container">
+            <section class="w-100 vh-100 d-flex flex-column justify-content-center align-items-center fs-1 ">
+              <h1 class="centered-text fade-in-text" style="font-family: Chewy; color: #fff; ">Welcome to kafa.com</h1>
+              <h2 class="centered-text fade-in-text gap-50px" style="font-family: Poppins; color: #fff;">Your one true stop center.</h2>
+              <br>
+            </section>
 </div>
-
-<script>
-    const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
-});
-</script>
           
     </body>
 </html>
