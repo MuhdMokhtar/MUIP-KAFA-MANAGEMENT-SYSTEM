@@ -58,9 +58,9 @@
 
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="/manage-payments" class="sidebar-link">
                             <i class="lni lni-agenda"></i>
-                            <span>STUDENT RESULTS</span>
+                            <span>Manage Payment</span>
                         </a>
                     </li>
                     <li class="sidebar-item">

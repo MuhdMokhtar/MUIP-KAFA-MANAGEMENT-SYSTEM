@@ -13,6 +13,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, Notifiable, HasRoles;
 
+    public function students()
+{
+    return $this->hasMany(Student::class, 'parent_id'); 
+}
+
     /**
      * The attributes that are mass assignable.
      *
