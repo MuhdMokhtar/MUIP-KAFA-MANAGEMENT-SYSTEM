@@ -2,23 +2,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
 
+body {
+    background-image: url("../images/kafamainimg.jpg");
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-attachment: fixed;
+}
+.fade-in-text {
+    font-family: Arial;
+    font-size: 40px;
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 
 .bgcolor {
-    background-color: #6b9080;
+    background-color: #fff;
 }
 .wrapper-main {
     width: 1000px;
-}
-.swiper {
-    width: 1000px;
-   height: 700px;
-  }
-.swiper-wrapper {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
 }
 /*Responsive Website between major breakpoint*/
 @media only screen and(max-width: 600px) {
