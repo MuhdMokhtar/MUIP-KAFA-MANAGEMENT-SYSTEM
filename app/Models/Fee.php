@@ -15,4 +15,5 @@ class Fee extends Model
     {
         return $this->belongsTo(Student::class);
     }
+    
 }

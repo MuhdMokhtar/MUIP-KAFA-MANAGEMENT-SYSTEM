@@ -36,8 +36,14 @@ class ManagePaymentController extends Controller
     
 
     public function paymentHistory()
+
     {
-        return view('ManagePayment/paymentHistory');
+        $user = auth()->user();
+        $fees = Fee::whereHas('student', function ($query) use ($user) {
+            $query->where('parent_id', $user->id);
+        })->with('student')->get(); 
+    
+        return view('ManagePayment.paymentHistory', compact('fees'));
     }
 
 
@@ -117,7 +123,11 @@ public function handlePaymentCancel(Request $request)
     return redirect()->route('payment-details', $fee->student_id)->with('error', 'Payment was cancelled.');
 }
 
+
+
 }
+
+
 
 
 

@@ -1,35 +1,46 @@
-
 <x-app-layout>
     <head>
-        @vite(['resources/css/payment-details.css'])  {{-- Assuming your CSS is in this file --}}
+        @vite(['resources/css/payment-details.css'])
     </head>
     
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-                    {{-- Payment History Section --}}
                     <h2>Payment History</h2>
 
-                    <div class="container"> 
-                        <table>
+                    
+                        <table class="table table-striped table-hover"> 
                             <thead>
                                 <tr>
-                                    <th>Payment ID</th>
+                                    <th>Fee ID</th>
+                                    <th>Student Name</th> 
                                     <th>Date</th>
-                                    <th>Amount</th>
+                                    <th>Tuition Fee</th> 
+                                    <th>Activity Fee</th>
+                                    <th>Total Amount</th> {{-- Add Total Amount Column --}}
                                     <th>Status</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @foreach ($fees as $fee) 
+                                    <tr>
+                                        <td>{{ $fee->id }}</td>
+                                        <td>{{ $fee->student->name }}</td> 
+                                        <td>{{ $fee->created_at->format('Y-m-d') }}</td> 
+                                        <td>{{ number_format($fee->tuition_fee, 2) }}</td>
+                                        <td>{{ number_format($fee->activity_fee, 2) }}</td>
+                                        <td>{{ number_format($fee->tuition_fee + $fee->activity_fee, 2) }}</td> {{-- Calculate Total Amount --}}
+                                        <td>{{ $fee->status }}</td>
+                                        <td>
+                                            <a href="{{ route('payment-details', ['fee' => $fee]) }}" class="btn btn-sm btn-info">Details</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                    </div>
-                    {{-- End Payment History Section --}}
-
+                    
                 </div>
             </div>
         </div>
