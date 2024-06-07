@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagePaymentController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ActivitiesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,16 @@ Route::middleware(['auth', 'role:parent'])->group(function () {
     // Optional error handling routes
     //Route::get('/payment/failure', [ManagePaymentController::class, 'handlePaymentFailure'])->name('payment.failure');
     //Route::get('/payment/error', [ManagePaymentController::class, 'handlePaymentError'])->name('payment.error'); 
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function (){
+    Route::get('/manage-activity', [ActivitiesController::class, 'viewManageActivities'])->name('manage-activity');
+    Route::get('/add-activity', [ActivitiesController::class, 'viewAddActivities'])->name('add-activity');
+    Route::post('/store-activity', [ActivitiesController::class, 'storeActivities'])->name('store-activity');
+    Route::get('/view-activity/{id}', [ActivitiesController::class, 'viewActivity'])->name('view-activity');
+    Route::get('/edit-activity/{id}', [ActivitiesController::class, 'editActivity'])->name('edit-activity');
+    Route::delete('/delete-activity/{id}', [ActivitiesController::class, 'deleteActivity'])->name('delete-activity');
+    Route::put('/update-activity/{id}', [ActivitiesController::class, 'updateActivity'])->name('update-activity');
 });
 
     
