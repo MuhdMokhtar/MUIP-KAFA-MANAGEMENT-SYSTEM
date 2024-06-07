@@ -21,15 +21,18 @@ Route::middleware(['auth'])->group(function () {
     })->name('home');
 });
 
-
-
 Route::middleware(['auth', 'role:parent'])->group(function () {
-    Route::get('/payment-details', [ManagePaymentController::class, 'paymentDetails']);
+    Route::get('/payment-details', [ManagePaymentController::class, 'paymentDetails'])->name('payment-details');
     Route::get('/payment-history', [ManagePaymentController::class, 'paymentHistory']);
     Route::post('/students', [StudentController::class, 'store'])->name('students.store');
-    
- });
+    Route::post('/session/{fee}', [ManagePaymentController::class, 'session'])->name('session');
+    Route::get('/payment/success', [ManagePaymentController::class, 'handlePaymentSuccess'])->name('payment.success');
+    Route::get('/payment/cancel', [ManagePaymentController::class, 'handlePaymentCancel'])->name('payment.cancel');
 
+    // Optional error handling routes
+    //Route::get('/payment/failure', [ManagePaymentController::class, 'handlePaymentFailure'])->name('payment.failure');
+    //Route::get('/payment/error', [ManagePaymentController::class, 'handlePaymentError'])->name('payment.error'); 
+});
 
     
 

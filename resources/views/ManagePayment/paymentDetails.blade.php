@@ -1,49 +1,72 @@
 <x-app-layout>
-
     <head>
-        @vite(['resources/css/payment-details.css'])  {{-- CSS path --}}
+        @vite(['resources/css/payment-details.css'])
     </head>
-    
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        <h2>Student Financial Detail</h2>
-    
-                        <div class="container"> 
-                            <label for="studentName">Student Name</label>
-                            @if(isset($student))
-                                <input type="text" id="studentName" name="studentName" value="{{ $student->name }}" readonly> 
-                            @else
-                                <input type="text" id="studentName" name="studentName" value="No student found" readonly>
-                            @endif
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
-                            <label for ="tuitonFee">Tuition Fee</label>
-                            @if(isset($fee))
-                                <input type="text" id="tuitonFee" name="tuitonFee" value="{{$fee->tuition_fee}}" readonly>
-                            @else
-                                <input type="text" id="tuitonFee" name="tuitonFee" value="No payment found" readonly>
-                            @endif
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+    <div class="py-12">
+        <div class="max-w-2xl mx-auto sm:px-3 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <h2>Student Financial Details</h2>
 
-                            <label for="activityFee">Activity Fee</label>
-                            @if(isset($fee))
-                                <input type="text" id="activityFee" name="activityFee" value="{{ $fee->activity_fee }}" readonly>
-                            @else
-                                <input type="text" id="activityFee" name="activityFee" value="No payment found" readonly>
-                            @endif
+                    
 
-                            <label for ="totalFee">Total Fee</label>
-                            @if(isset($fee))
-                                <input type="text" id="totalFee" name="totalFee" value="{{ $fee->total_fee }}" readonly>
-                            @else
-                                <input type="text" id="totalFee" name="totalFee" value="No payment found" readonly>
-                            @endif
+                    @if($students->isNotEmpty()) 
+                        {{-- Dropdown to select a student --}}
+                        <form method="GET" action="{{ route('payment-details') }}">
+                            <label for="student">Select Student:</label>
+                            <select id="student" name="student_id">
+                                @foreach($students as $student)
+                                    <option value="{{ $student->id }}" {{ request('student_id') == $student->id ? 'selected' : '' }}>
+                                        {{ $student->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <button type="submit">View Details</button>
+                        </form>
 
-                            </div> 
-                    </div>
+                        {{-- Display selected student's details and payment button --}}
+                        @if(request()->has('student_id'))
+                            @php
+                                $selectedStudent = $students->firstWhere('id', request('student_id'));
+                                $fee = $selectedStudent->fees->sortByDesc('created_at')->first();
+                            @endphp
+
+                            <div class="container mt-4">
+                                <label for="studentName">Student Name:</label>
+                                <input type="text" id="studentName" value="{{ $selectedStudent->name }}" readonly>
+
+                                <label for="tuitionFee">Tuition Fee:</label>
+                                <input type="text" id="tuitionFee" value="{{ $fee ? $fee->tuition_fee : 'No payment found' }}" readonly>
+
+                                <label for="activityFee">Activity Fee:</label>
+                                <input type="text" id="activityFee" value="{{ $fee ? $fee->activity_fee : 'No payment found' }}" readonly>
+                                
+                                <label for="totalFee">Total Fee:</label>
+                                <input type="text" id="totalFee" value="{{ $fee ? ($fee->tuition_fee + $fee->activity_fee) : 'No payment found' }}" readonly>
+                            </div>
+
+                            @if ($fee && $fee->status === 'pending')
+                            <form action="{{ route('session', ['fee' => $fee->id]) }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-primary mt-4" type="submit">Pay Tuition Fee</button>
+                                </form>
+                                <script src="https://js.stripe.com/v3/"></script>
+                            @endif
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
-    </x-app-layout>
-
-
+    </div>
+</x-app-layout>
