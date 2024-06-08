@@ -9,6 +9,8 @@ use App\Models\Fee;
 use Stripe\StripeClient;
 use Stripe\Checkout\Session;
 use Illuminate\Support\Facades\Log;
+use Stripe\PaymentIntent;
+
 
 
 
@@ -39,9 +41,12 @@ class ManagePaymentController extends Controller
 
     {
         $user = auth()->user();
+
         $fees = Fee::whereHas('student', function ($query) use ($user) {
             $query->where('parent_id', $user->id);
-        })->with('student')->get(); 
+        })
+        ->where('status', 'paid')
+        ->get(); 
     
         return view('ManagePayment.paymentHistory', compact('fees'));
     }
@@ -116,14 +121,65 @@ class ManagePaymentController extends Controller
 
 
 public function handlePaymentCancel(Request $request)
+
 {
+    // Get the fee ID from the query string
     $feeId = $request->query('fee_id'); 
+    // Error Handling: Check if fee ID is present
     $fee = Fee::findOrFail($feeId);
 
     return redirect()->route('payment-details', $fee->student_id)->with('error', 'Payment was cancelled.');
 }
 
+public function showPaymentInfo(Fee $fee) 
+    {
+        // Ensure the authenticated user is authorized to view this fee (e.g., parent)
+       
 
+        $paymentIntentId = $fee->stripe_payment_intent_id;
+        
+        // Check if the payment was made through Stripe
+        if ($paymentIntentId) {
+            try {
+                \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+                $paymentIntent = PaymentIntent::retrieve($paymentIntentId);
+
+                $paymentData = [
+                    'fee_id' => $fee->id,
+                    'student_name' => $fee->student->name,
+                    'tuition_fee' => $fee->tuition_fee,
+                    'activity_fee' => $fee->activity_fee,
+                    'total_paid' => $fee->tuition_fee + $fee->activity_fee,
+                    'payment_date' => date('Y-m-d H:i:s', $paymentIntent->created),
+                    'payment_method' => $paymentIntent->payment_method_types[0], 
+                    'transaction_id' => $paymentIntent->id,
+                ];
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                // Handle Stripe API errors (e.g., log, show an error message)
+                // For this example, we'll just return a simpler view without Stripe data.
+                $paymentData = [
+                    'fee_id' => $fee->id,
+                    'student_name' => $fee->student->name,
+                    'tuition_fee' => $fee->tuition_fee,
+                    'activity_fee' => $fee->activity_fee,
+                    'total_paid' => $fee->tuition_fee + $fee->activity_fee,
+                    // ...other fee details, but no Stripe data
+                ];
+            }
+        } else {
+            // If no Stripe payment, just show the basic fee details
+            $paymentData = [
+                'fee_id' => $fee->id,
+                'student_name' => $fee->student->name,
+                'tuition_fee' => $fee->tuition_fee,
+                'activity_fee' => $fee->activity_fee,
+                'total_paid' => $fee->tuition_fee + $fee->activity_fee,
+                // ...other fee details
+            ];
+        }
+
+        return view('/ManagePayment/paymentinfo', compact('fee')); 
+    }
 
 }
 

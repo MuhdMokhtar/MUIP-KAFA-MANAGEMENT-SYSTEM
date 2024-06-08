@@ -29,6 +29,8 @@ Route::middleware(['auth', 'role:parent'])->group(function () {
     Route::post('/session/{fee}', [ManagePaymentController::class, 'session'])->name('session');
     Route::get('/payment/success', [ManagePaymentController::class, 'handlePaymentSuccess'])->name('payment.success');
     Route::get('/payment/cancel', [ManagePaymentController::class, 'handlePaymentCancel'])->name('payment.cancel');
+    Route::get('/payment-history/{fee}/info', [ManagePaymentController::class, 'showPaymentInfo'])->name('fees.info');
+
     
 
     // Optional error handling routes

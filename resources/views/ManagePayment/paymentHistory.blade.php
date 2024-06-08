@@ -1,8 +1,4 @@
 <x-app-layout>
-    <head>
-        @vite(['resources/css/payment-details.css'])
-    </head>
-    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -34,13 +30,13 @@
                                         <td>{{ number_format($fee->tuition_fee + $fee->activity_fee, 2) }}</td> {{-- Calculate Total Amount --}}
                                         <td>{{ $fee->status }}</td>
                                         <td>
-                                            <a href="{{ route('payment-details', ['fee' => $fee]) }}" class="btn btn-sm btn-info">Details</a>
+                                            <a href="{{ route('fees.info', ['fee' => $fee->id]) }}" class="btn btn-sm btn-info">Details</a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>
-                    
+                       </table>
+
                 </div>
             </div>
         </div>
