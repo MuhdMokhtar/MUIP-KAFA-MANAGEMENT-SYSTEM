@@ -18,7 +18,10 @@ return new class extends Migration
             // Other student-related fields
             $table->date('date_of_birth')->nullable();
             $table->string('darjah')->nullable();
-            
+            $table->string('status')->nullable();
+            $table->string('subject')->nullable();
+            $table->string('grade')->nullable();
+
           
 
             $table->timestamps(); // created_at, updated_at
