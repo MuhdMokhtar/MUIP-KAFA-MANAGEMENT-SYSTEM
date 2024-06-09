@@ -117,7 +117,6 @@
     <footer>
         <div class="footer">
             <p>© 2024 E-KAFA. All Rights Reserved</p>
-
         </div>
     </footer>
 </body>
