@@ -12,6 +12,12 @@ use App\Models\Fee;
 class StudentController extends Controller
 {
 
+    public function viewRegister()
+    {
+
+        return view('ManageUser.register');
+    }
+
 
     public function store(Request $request)
 

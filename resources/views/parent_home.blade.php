@@ -1,62 +1,41 @@
 <x-app-layout>
-  <div class="py-12">
-      <div class="container">
-          <div class="max-w-2xl mx-auto">
-              <div class="card shadow-sm">
-                  <div class="card-body">
-                      <h2 class="card-title">E-KAFA</h2>
+    <div class="py-12 bg-gray-100">
+        <div class="container">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Welcome to KAFA Parent Portal</h2>
+                        <p class="text-gray-600 mb-6">
+                            Welcome to the Kelas Al-Quran & Fardu Ain (KAFA) Parent Portal. This portal is designed to provide you with easy access to important information and resources related to your child's education in our program.
+                        </p>
 
-                      @if (auth()->user()->hasRole('parent'))  {{-- Show form only for parents --}}
-                      <div class="container mt-4">
-                          <form method="POST" action="{{ route('students.store') }}">
-                              @csrf
-                              <div class="mb-3">
-                                  <label for="name" class="form-label">Student Name:</label>
-                                  <input type="text" name="name" id="name" class="form-control" required>
-                              </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Program Overview</h3>
+                        <p class="text-gray-600 mb-6">
+                            Our KAFA program aims to provide comprehensive Islamic education to children, focusing on Quranic studies and Fardu Ain (obligatory religious knowledge). We strive to create a nurturing learning environment that promotes spiritual growth, character development, and academic excellence.
+                        </p>
 
-                              <div class="mb-3">
-                                  <label for="date_of_birth" class="form-label">Date of Birth:</label>
-                                  <input type="date" name="date_of_birth" id="date_of_birth" class="form-control">
-                              </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Features</h3>
+                        <ul class="list-disc list-inside text-gray-600 mb-6">
+                            <li>View your child's progress and grades</li>
+                            <li>Access class schedules and attendance records</li>
+                            <li>Communicate with teachers and administrators</li>
+                            <li>Stay updated on program announcements and events</li>
+                            <li>Explore educational resources and materials</li>
+                            <li>Engage with other parents in the community forum</li>
+                        </ul>
 
-                              <div class="mb-3">
-                                  <label for="grade" class="form-label">Darjah:</label>
-                                  <input type="text" name="grade" id="grade" class="form-control">
-                              </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Get Involved</h3>
+                        <p class="text-gray-600 mb-6">
+                            We encourage parents to actively participate in their child's education journey. Whether it's volunteering for events, joining parent-teacher associations, or providing feedback, your involvement is valuable and appreciated.
+                        </p>
 
-                              <button type="submit" class="btn btn-primary">Register</button>
-                          </form>
-                      </div>
-
-                      {{-- Success Modal --}}
-                      <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h5 class="modal-title" id="successModalLabel">Success</h5>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Your child has been successfully registered!
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-                      {{-- Include Bootstrap JS and Your Custom JS --}}
-                      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-                      <script>
-                          // Check for the success message in the session
-                          @if(Session::has('success'))
-                              const myModal = new bootstrap.Modal('#successModal');
-                              myModal.show();
-                          @endif
-                      </script>
-                      @endif
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Need Help?</h3>
+                        <p class="text-gray-600">
+                            If you have any questions, concerns, or need assistance, please don't hesitate to contact us. Our team is here to support you and ensure the best possible experience for you and your child in our KAFA program.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

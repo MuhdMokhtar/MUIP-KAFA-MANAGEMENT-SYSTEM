@@ -33,7 +33,6 @@
             text-align: center;
         }
     </style>
-
 </head>
 
 <body>
@@ -54,6 +53,11 @@
                         <span>Profile</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('register.view') }}" class="sidebar-link">
+                        <i class="lni lni-users"></i>
+                        <span>Students</span>
+                    </a>
                 <li class="sidebar-item">
                     <a href="/kafa" class="sidebar-link">
                         <i class="lni lni-book"></"></i>

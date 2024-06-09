@@ -15,27 +15,24 @@ Route::middleware(['auth'])->group(function () {
         if (auth()->user()->hasRole('parent')) {
             return view('parent_home');
         } elseif (auth()->user()->hasRole('admin')) {
-            return view('admin_home');
-        } else {
+            return view('admin_home');      
+        } elseif (auth()->user()->hasRole('teacher')) {
+            return view('teacher_home');
+        }else {
             abort(403); 
         }
     })->name('home');
 });
 
 Route::middleware(['auth', 'role:parent'])->group(function () {
+    Route::get('/register/view', [StudentController::class, 'viewRegister'])->name('register.view');
+    Route::post('/register/store', [StudentController::class, 'store'])->name('register.store');
     Route::get('/payment-details', [ManagePaymentController::class, 'paymentDetails'])->name('payment-details');
     Route::get('/payment-history', [ManagePaymentController::class, 'paymentHistory']);
-    Route::post('/students', [StudentController::class, 'store'])->name('students.store');
     Route::post('/session/{fee}', [ManagePaymentController::class, 'session'])->name('session');
     Route::get('/payment/success', [ManagePaymentController::class, 'handlePaymentSuccess'])->name('payment.success');
     Route::get('/payment/cancel', [ManagePaymentController::class, 'handlePaymentCancel'])->name('payment.cancel');
     Route::get('/payment-history/{fee}/info', [ManagePaymentController::class, 'showPaymentInfo'])->name('fees.info');
-
-    
-
-    // Optional error handling routes
-    //Route::get('/payment/failure', [ManagePaymentController::class, 'handlePaymentFailure'])->name('payment.failure');
-    //Route::get('/payment/error', [ManagePaymentController::class, 'handlePaymentError'])->name('payment.error'); 
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
