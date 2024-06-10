@@ -51,7 +51,7 @@
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
 
-                        <a href="#" class="sidebar-link">
+                        <a href="{{ route('manage-activity') }}" class="sidebar-link">
                             <i class="lni lni-book"></"></i>
                             <span>KAFA ACTIVITIES</span>
                         </a>
@@ -67,8 +67,9 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
+                        <a href="/manage-payments" class="sidebar-link">
                             <i class="lni lni-agenda"></i>
-                            <span>STUDENT RESULTS</span>
+                            <span>Manage Payment</span>
                         </a>
                     </li>
                     

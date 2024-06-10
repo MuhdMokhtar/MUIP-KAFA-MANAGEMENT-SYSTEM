@@ -123,4 +123,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+   
+       // Default fees for new students
+        'default_tuition_fee' => 100,  
+        'default_activity_fee' => 50,
+        'default_total_fee' => 150,
+
+        'stripe' => [
+            'key' => env('STRIPE_KEY'),
+            'secret' => env('STRIPE_SECRET'),
+            // ... other Stripe configuration options ...
+        ],
+    
+
 ];

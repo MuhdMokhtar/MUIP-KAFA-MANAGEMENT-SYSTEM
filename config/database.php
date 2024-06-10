@@ -90,7 +90,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'search_path' => env('DB_SEARCH_PATH', 'public'),
+            'search_path' => env('laravel'),
             'sslmode' => 'prefer',
             'options' => [
                 PDO::ATTR_EMULATE_PREPARES => true,

@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+
+body {
+    background-image: url("../images/kafamainimg.jpg");
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-attachment: fixed;
+}
+.fade-in-text {
+    font-family: Arial;
+    font-size: 40px;
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
+.bgcolor {
+    background-color: #fff;
+}
+.wrapper-main {
+    width: 1000px;
+}
+/*Responsive Website between major breakpoint*/
+@media only screen and(max-width: 600px) {
+    .wrapper-main{
+        width: 100%;
+    }
+    
+    
+}
+@media only screen and (min-width: 601px) {
+    .wrapper-main{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .wrapper-main{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .wrapper-main{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .wrapper-main{
+        width: 100%;
+    }
+}
+
+
+
+/*Typewriting Element*/
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #6b9080; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 2.0s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 45% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #6b9080; }
+  }
+  /*Typewriting Element*/
