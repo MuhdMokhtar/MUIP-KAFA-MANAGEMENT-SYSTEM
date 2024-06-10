@@ -58,11 +58,20 @@
 
                     </li>
                     <li class="sidebar-item">
+
+                        <a href="#" class="sidebar-link">
+                            <i class="lni lni-book"></"></i>
+                            <span>KAFA BULLETIN DASHBOARD</span>
+                        </a>
+
+                    </li>
+                    <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
                             <i class="lni lni-agenda"></i>
                             <span>STUDENT RESULTS</span>
                         </a>
                     </li>
+                    
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
                             <i class="bi bi-receipt"></i>
