@@ -59,7 +59,7 @@
                         <span>Students</span>
                     </a>
                 <li class="sidebar-item">
-                    <a href="/kafa" class="sidebar-link">
+                    <a href="{{ route('parent-view') }}" class="sidebar-link">
                         <i class="lni lni-book"></"></i>
                         <span>KAFA ACTIVITIES</span>
                     </a>

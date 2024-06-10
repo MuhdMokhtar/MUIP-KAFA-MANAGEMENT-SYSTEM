@@ -77,4 +77,9 @@ class ActivitiesController extends Controller
         return redirect()->route('manage-activity')->with('success', 'Activity updated successfully.');
     }
 
+    public function viewParentManageActivities(){
+        $activities = Activities::all();
+        return view('ManageKafaActivities.ParentsActivities', compact('activities'));
+    }
+
 }
