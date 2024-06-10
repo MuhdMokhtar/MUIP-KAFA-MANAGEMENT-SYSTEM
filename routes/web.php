@@ -35,6 +35,7 @@ Route::middleware(['auth', 'role:parent'])->group(function () {
     Route::get('/payment/success', [ManagePaymentController::class, 'handlePaymentSuccess'])->name('payment.success');
     Route::get('/payment/cancel', [ManagePaymentController::class, 'handlePaymentCancel'])->name('payment.cancel');
     Route::get('/payment-history/{fee}/info', [ManagePaymentController::class, 'showPaymentInfo'])->name('fees.info');
+    Route::get('/parent-view', [ActivitiesController::class, 'viewParentManageActivities'])->name('parent-view');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
