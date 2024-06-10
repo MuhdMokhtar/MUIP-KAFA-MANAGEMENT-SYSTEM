@@ -59,7 +59,7 @@
                     </li>
                     <li class="sidebar-item">
 
-                        <a href="#" class="sidebar-link">
+                        <a href="{{ route('manage-dashboard') }}" class="sidebar-link">
                             <i class="lni lni-book"></"></i>
                             <span>KAFA BULLETIN DASHBOARD</span>
                         </a>

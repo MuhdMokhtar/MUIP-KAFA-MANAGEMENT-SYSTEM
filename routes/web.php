@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagePaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ActivitiesController;
+use App\Http\Controllers\BulletinDashboardController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +45,13 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::get('/edit-activity/{id}', [ActivitiesController::class, 'editActivity'])->name('edit-activity');
     Route::delete('/delete-activity/{id}', [ActivitiesController::class, 'deleteActivity'])->name('delete-activity');
     Route::put('/update-activity/{id}', [ActivitiesController::class, 'updateActivity'])->name('update-activity');
+    Route::get('/manage-dashboard', [BulletinDashboardController::class, 'viewDashboard'])->name('manage-dashboard');
+    Route::get('/create-post', [BulletinDashboardController::class, 'viewAddPost'])->name('create-post');
+    Route::post('/store-bulletin', [BulletinDashboardController::class, 'storeBulletin'])->name('store-bulletin');
+    Route::get('/bulletins/{id}', [BulletinDashboardController::class, 'show'])->name('bulletins.show');
+    Route::delete('/delete-bulletin/{id}', [BulletinDashboardController::class, 'deleteBulletin'])->name('delete-bulletin');
+    Route::get('/edit-bulletin/{id}', [BulletinDashboardController::class, 'editBulletin'])->name('edit-bulletin');
+    Route::put('/update-bulletin/{id}', [BulletinDashboardController::class, 'updateBulletin'])->name('update-bulletin');
 });
 
     
