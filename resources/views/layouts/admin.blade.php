@@ -16,7 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="{{ URL::asset('css/adminsidebar.css')}}" />
 
@@ -66,13 +67,21 @@
 
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                        <a href="/manage-payments" class="sidebar-link">
-                            <i class="lni lni-agenda"></i>
-                            <span>Manage Payment</span>
+
+                        <a href="{{ route('student-result') }}" class="sidebar-link">
+                            <i class="lni lni-book"></"></i>
+                            <span>Manage Student Result</span>
                         </a>
+
                     </li>
-                    
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            <a href="/manage-payments" class="sidebar-link">
+                                <i class="lni lni-agenda"></i>
+                                <span>Manage Payment</span>
+                            </a>
+                    </li>
+
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
                             <i class="bi bi-receipt"></i>
@@ -108,7 +117,9 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
         <script src="{{ URL::asset('js/sidebarscript.js')}}"></script>
         <footer>
             <div class="footer">

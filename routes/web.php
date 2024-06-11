@@ -6,6 +6,7 @@ use App\Http\Controllers\ManagePaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ActivitiesController;
 use App\Http\Controllers\BulletinDashboardController;
+use App\Http\Controllers\StudentResultController;
 
 
 Route::get('/', function () {
@@ -17,11 +18,11 @@ Route::middleware(['auth'])->group(function () {
         if (auth()->user()->hasRole('parent')) {
             return view('parent_home');
         } elseif (auth()->user()->hasRole('admin')) {
-            return view('admin_home');      
+            return view('admin_home');
         } elseif (auth()->user()->hasRole('teacher')) {
             return view('teacher_home');
-        }else {
-            abort(403); 
+        } else {
+            abort(403);
         }
     })->name('home');
 });
@@ -38,7 +39,7 @@ Route::middleware(['auth', 'role:parent'])->group(function () {
     Route::get('/parent-view', [ActivitiesController::class, 'viewParentManageActivities'])->name('parent-view');
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function (){
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/manage-activity', [ActivitiesController::class, 'viewManageActivities'])->name('manage-activity');
     Route::get('/add-activity', [ActivitiesController::class, 'viewAddActivities'])->name('add-activity');
     Route::post('/store-activity', [ActivitiesController::class, 'storeActivities'])->name('store-activity');
@@ -53,9 +54,11 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::delete('/delete-bulletin/{id}', [BulletinDashboardController::class, 'deleteBulletin'])->name('delete-bulletin');
     Route::get('/edit-bulletin/{id}', [BulletinDashboardController::class, 'editBulletin'])->name('edit-bulletin');
     Route::put('/update-bulletin/{id}', [BulletinDashboardController::class, 'updateBulletin'])->name('update-bulletin');
+    Route::post('/student-results', [StudentResultController::class, 'handleSubjectSelection'])->name('select-subject');
+    Route::get('/view-student-result', [StudentResultController::class, 'viewStudentResult'])->name('student-result');
 });
 
-    
+
 
 
 Route::middleware('auth')->group(function () {
@@ -64,4 +67,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
