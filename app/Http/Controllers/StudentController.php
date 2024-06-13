@@ -44,7 +44,7 @@ class StudentController extends Controller
 
         $student->fees()->save($fee);
 
-        return redirect()->back()->with('success', 'successfully Registered.');
+        return redirect()->back()->with('success', 'Added.');
 
     }
 
