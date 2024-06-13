@@ -7,6 +7,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ActivitiesController;
 use App\Http\Controllers\BulletinDashboardController;
 use App\Http\Controllers\StudentResultController;
+use App\Http\Controllers\BookingController;
+use App\Models\Activity;
 
 
 Route::get('/', function () {
@@ -37,6 +39,8 @@ Route::middleware(['auth', 'role:parent'])->group(function () {
     Route::get('/payment/cancel', [ManagePaymentController::class, 'handlePaymentCancel'])->name('payment.cancel');
     Route::get('/payment-history/{fee}/info', [ManagePaymentController::class, 'showPaymentInfo'])->name('fees.info');
     Route::get('/parent-view', [ActivitiesController::class, 'viewParentManageActivities'])->name('parent-view');
+    Route::post('/activities/{activity}/book', [BookingController::class, 'store'])->name('activities.book');
+    Route::post('/activities/{activity}/unbook', [BookingController::class, 'destroy'])->name('activities.unbook');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

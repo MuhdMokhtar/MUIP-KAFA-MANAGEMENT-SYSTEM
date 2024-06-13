@@ -2,7 +2,7 @@
     <div class="py-12 bg-gray-100">
         <div class="container">
             <div class="max-w-2xl mx-auto">
-            <h3 class="text-center mb-4">KAFA Activities</h3>
+                <h3 class="text-center mb-4">KAFA Activities</h3>
                 <div class="bg-white rounded-lg shadow-md">
                     <div class="mt-4">
                         <table class="table">
@@ -21,7 +21,17 @@
                                         <td>{{ $activity->activity_name }}</td>
                                         <td>{{ $activity->start_date }}</td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm">Booking</a>
+                                            @if($activity->bookings()->where('user_id', auth()->id())->exists())
+                                                <form action="{{ route('activities.unbook', $activity) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger btn-sm">Unbook</button>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('activities.book', $activity) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-info btn-sm">Book</button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -36,4 +46,3 @@
         </div>
     </div>
 </x-app-layout>
-

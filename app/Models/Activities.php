@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Bookings;
 
 class Activities extends Model
 {
@@ -25,4 +26,9 @@ class Activities extends Model
         'description',
         'status',
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Bookings::class);
+    }
 }
