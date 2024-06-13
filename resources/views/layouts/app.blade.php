@@ -56,7 +56,7 @@
                 <li class="sidebar-item">
                     <a href="{{ route('register.view') }}" class="sidebar-link">
                         <i class="lni lni-users"></i>
-                        <span>Students</span>
+                        <span>Register</span>
                     </a>
                 <li class="sidebar-item">
                     <a href="{{ route('parent-view') }}" class="sidebar-link">
@@ -76,8 +76,8 @@
                         <span>FEES</span>
                     </a>
                     <ul class="sidebar-dropdown">
-                        <li><a href="/payment-details" class="sidebar-link">Payment Details</a></li>
-                        <li><a href="/payment-history" class="sidebar-link">Payment History</a></li>
+                        <li><a href="/payment-details" class="sidebar-link">Details</a></li>
+                        <li><a href="/payment-history" class="sidebar-link">History</a></li>
 
                     </ul>
                 </li>

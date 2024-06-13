@@ -38,7 +38,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                      Your child has been successfully registered!
+                                       successfully registered!
                                     </div>
                                 </div>
                             </div>

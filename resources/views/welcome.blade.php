@@ -94,7 +94,7 @@
     <!--MAIN BODY START HERE-->
     <div class="container d-flex flex-column justify-content-center align-items-center text-center vh-100">
         <h1 class="centered-text" style="font-family: Chewy; color: #fff;">Welcome to E-KAFA</h1>
-        <h2 class="centered-text gap-50px" style="font-family: 'Poppins', sans-serif; color: #fff;">Your one true stop center.</h2>
+        <h2 class="centered-text gap-50px" style="font-family: 'Poppins', sans-serif; color: #fff;"></h2>
     </div>
 </body>
 </html>

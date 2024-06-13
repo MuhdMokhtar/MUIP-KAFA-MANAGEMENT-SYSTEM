@@ -129,10 +129,11 @@ return [
         'default_activity_fee' => 50,
         'default_total_fee' => 150,
 
+        // Stripe keys
         'stripe' => [
             'key' => env('STRIPE_KEY'),
             'secret' => env('STRIPE_SECRET'),
-            // ... other Stripe configuration options ...
+           
         ],
     
 
