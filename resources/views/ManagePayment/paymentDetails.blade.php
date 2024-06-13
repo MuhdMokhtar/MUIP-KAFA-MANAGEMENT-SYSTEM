@@ -20,10 +20,10 @@
 
                         @if($students->isNotEmpty()) 
                         {{-- Dropdown to select a student --}}
-                        <form id="studentForm" method="GET" action="{{ route('payment-details') }}">
+                        <form method="GET" action="{{ route('payment-details') }}">
                             <div class="mb-3">
                                 <label for="student" class="form-label">Select Student:</label>
-                                <select id="student" name="student_id" class="form-select" onchange="document.getElementById('studentForm').submit();">
+                                <select id="student" name="student_id" class="form-select">
                                     @foreach($students as $student)
                                     <option value="{{ $student->id }}" {{ request('student_id') == $student->id ? 'selected' : '' }}>
                                         {{ $student->name }}
@@ -31,6 +31,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <button type="submit" class="btn btn-primary">View Details</button>
                         </form>
 
                         {{-- Display selected student's details and payment button --}}
@@ -40,7 +41,6 @@
                             $fee = $selectedStudent->fees->sortByDesc('created_at')->first();
                         @endphp
 
-                        @if ($fee && $fee->status === 'pending')
                         <div class="mt-4">
                             <div class="mb-3">
                                 <label for="studentName" class="form-label">Student Name:</label>
@@ -63,15 +63,18 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('session', ['fee' => $fee->id]) }}" method="POST">
-                            @csrf
-                            <button class="btn btn-primary mt-4" type="submit">Pay Tuition Fee</button>
-                        </form>
-                        <script src="https://js.stripe.com/v3/"></script>
-                        @else
-                        <div class="alert alert-success mt-4">
-                            The tuition fee has already been paid.
-                        </div>
+                        @if ($fee)
+                            @if ($fee->status === 'pending')
+                            <form action="{{ route('session', ['fee' => $fee->id]) }}" method="POST">
+                                @csrf
+                                <button class="btn btn-primary mt-4" type="submit">Pay Tuition Fee</button>
+                            </form>
+                            <script src="https://js.stripe.com/v3/"></script>
+                            @elseif ($fee->status === 'paid')
+                            <div class="alert alert-success mt-4">
+                                Tuition fee already paid.
+                            </div>
+                            @endif
                         @endif
                         @endif
                         @endif
