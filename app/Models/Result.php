@@ -15,8 +15,11 @@ class Result extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 
+        'student_name',
         'subject',
         'grade',
+        'score',
+        'status',
+        'comment',
     ];
 }

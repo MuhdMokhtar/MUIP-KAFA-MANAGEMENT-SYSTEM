@@ -58,8 +58,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/delete-bulletin/{id}', [BulletinDashboardController::class, 'deleteBulletin'])->name('delete-bulletin');
     Route::get('/edit-bulletin/{id}', [BulletinDashboardController::class, 'editBulletin'])->name('edit-bulletin');
     Route::put('/update-bulletin/{id}', [BulletinDashboardController::class, 'updateBulletin'])->name('update-bulletin');
-    Route::post('/student-results', [StudentResultController::class, 'handleSubjectSelection'])->name('select-subject');
     Route::get('/view-student-result', [StudentResultController::class, 'viewStudentResult'])->name('student-result');
+    Route::post('/student-results/store', [StudentResultController::class, 'addStudentResult'])->name('store-student-result');
+
 });
 
 

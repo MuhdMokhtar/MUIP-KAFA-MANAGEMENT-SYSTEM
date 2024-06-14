@@ -13,12 +13,29 @@ class StudentResultController extends Controller
         return view('ManageStudentResults.studentList', compact('results'));
     }
 
-    public function handleSubjectSelection(Request $request)
+    public function addStudentResult(Request $request)
     {
-        $selectedSubject = $request->input('subject');
+        $validatedData = $request->validate([
+            'student_name' => 'required|string|max:255',
+            'subject' => 'required|string|max:255',
+            'grade' => 'required|string|max:255', // Adjust validation if grade is numerical
+            'score' => 'nullable|numeric', // Adjust validation if score has a range
+            'status' => 'required|string|max:255',
+            'comment' => 'nullable|string', // Optional comment/feedback field
+        ]);
 
-        // Logic to handle selected subject (e.g., redirect to filtered results page)
+        // Create a new student result record
+        $result = Result::create([
+            'student_name' => $validatedData['student_name'],
+            'subject' => $validatedData['subject'],
+            'grade' => $validatedData['grade'],
+            'score' => $validatedData['score'],
+            'status' => $validatedData['status'],
+            'comment' => $validatedData['comment'], // Include comment if provided
+        ]);
 
-        return redirect()->route('student-results.view', ['subject' => $selectedSubject]); // Replace with actual route
+        // Redirect to a success page or relevant view with a success message
+        return redirect()->route('manage-student-results')->with('success', 'Student result added successfully!');
     }
+
 }
