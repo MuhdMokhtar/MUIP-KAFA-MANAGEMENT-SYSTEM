@@ -4,6 +4,7 @@
             <h3 class="text-center mb-4">Edit Bulletin</h3>
             <div class="mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <!-- Form for editing an existing bulletin -->
                     <form method="POST" action="{{ route('update-bulletin', $bulletin->id) }}">
                         @csrf
                         @method('PUT')
@@ -12,11 +13,14 @@
                             <input type="text" id="bulletin_title" name="bulletin_title" class="form-control" value="{{ $bulletin->bulletin_title }}">
                         </div>
                         <div class="mt-3">
+                            <!-- Description Textarea -->
                             <label for="description" class="form-label text-start w-100">Description</label>
                             <textarea id="description" name="description" class="form-control" rows="3">{{ $bulletin->description }}</textarea>
                         </div>
                         <div class="text-center mt-4">
+                            <!-- Update Button -->
                             <button type="submit" class="btn btn-primary">Update bulletin</button>
+                            <!-- Cancel Button -->
                             <a href="{{ route('manage-dashboard') }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>

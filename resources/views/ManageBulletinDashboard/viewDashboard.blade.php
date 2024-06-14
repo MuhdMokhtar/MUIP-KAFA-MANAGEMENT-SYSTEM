@@ -1,20 +1,21 @@
 <x-admin-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h3>KAFA Bulletin Dashboard</h3>
+            <h2><font-weight: bold;>KAFA Bulletin Dashboard</h2>
             <div class="mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="text-start mb-0">DASHBOARD</h3>
-                        <a href="{{ route('create-post') }}" class="btn btn-warning" style="height: auto; font-size: 1.5rem; font-weight: bold;">Create post</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- Create Post Button -->
+                    <a href="{{ route('create-post') }}" class="btn btn-warning" style="height: auto; font-size: 1rem;">Create post</a>
                     </div>
+                    
                     <div class="mt-4">
+                        <!-- Bulletin Table -->
                         <table class="table">
                             <thead class="thead">
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Bulletin Name</th>
+                                    <th scope="col">Title</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -36,12 +37,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <!-- No Bulletin Found Message -->
                         @if($bulletins->isEmpty())
                             <p class="text-center">No bulletin found.</p>
                         @endif
                     </div>
                 </div>
             </div>
+            <!-- Popup for Viewing Bulletin Details -->
             <div id="viewDetails" class="popup" style="display: none;">
                 <div class="popup-content">
                     <span class="close">&times;</span>
