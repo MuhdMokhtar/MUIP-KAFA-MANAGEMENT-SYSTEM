@@ -76,20 +76,6 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
-                            <a href="/manage-payments" class="sidebar-link">
-                                <i class="lni lni-agenda"></i>
-                                <span>Manage Payment</span>
-                            </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-receipt"></i>
-                            <span>FEES</span>
-                        </a>
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
                             <i class="bi bi-bell-fill"></i>
                             <span>Notification</span>
                         </a>
